@@ -1,0 +1,11 @@
+---
+- hosts: webserver
+  become: yes
+  vars:
+    util: git
+  tasks:
+  - name: install util
+    package:
+      name: "{{ util }}"
+      state: present
+

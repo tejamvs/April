@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: yes
+  roles:
+  - geerlingguy.java
+  - idealista.tomcat-role 
+  tasks:
+  - copy:
+      src: gameoflife.war
+      dest: /var/lib/tomcat8/webapps
+    notify: 
+    - restart tomcat8
+  handlers:
+  - name: restart tomcat8
+    service:
+      name: tomcat8
+      state: restarted

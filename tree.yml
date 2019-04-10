@@ -1,0 +1,9 @@
+---
+- hosts: webserver
+  become: yes
+  tasks:
+  - name: install tree
+    package:
+      name: tree
+      state: present
+
